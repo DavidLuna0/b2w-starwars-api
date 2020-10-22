@@ -24,11 +24,16 @@ public class SWAPIService {
 		ResponseEntity<String> response = template.getForEntity(URL, String.class);
 		
 		JsonNode node = mapper.readTree(response.getBody());
-		node = node.get("results").get(0).get("films");
+		try {
+			node = node.get("results").get(0).get("films");
+		} catch(NullPointerException e) {
+			return 0;
+		}
 		
 		ObjectReader reader = mapper.readerFor(new TypeReference<List<String>>() {
 		});
 		List<String> films = reader.readValue(node);
+
 		return films.size();
 		
 	}
