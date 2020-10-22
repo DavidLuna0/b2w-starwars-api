@@ -71,9 +71,17 @@ public class PlanetService {
 	
 	public Planet save(Planet planet) {
 		Planet obj = planetRepository.findByNome(planet.getNome());
+		int filmsQtd = 0;
 		if(obj == null) {			
 			obj = planetRepository.save(planet);
 		}
+		try {
+			filmsQtd = swapiService.getPlanetQuantity(obj.getNome());
+		} catch (Exception e) {
+			logger.error(e.toString(), e.getMessage());
+			return null;
+		}
+		obj.setQuantidadeFilmes(filmsQtd);
 		return obj;
 	}
 	
