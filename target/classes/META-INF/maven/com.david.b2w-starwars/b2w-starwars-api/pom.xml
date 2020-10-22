@@ -11,9 +11,9 @@
 	</parent>
 	<groupId>com.david.b2w-starwars</groupId>
 	<artifactId>b2w-starwars-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<name>b2w-starwars-api</name>
-	<description>Demo project for Spring Boot</description>
+	<description>B2W StarWars API</description>
 
 	<properties>
 		<java.version>1.8</java.version>
