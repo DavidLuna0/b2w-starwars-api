@@ -41,7 +41,11 @@ public class PlanetRepositoryTest {
 	
 	@AfterEach
 	public void after() {
-		planetRepository.deleteAll();
+		planetRepository.deleteById(planet1.getId());
+		planetRepository.deleteById(planet2.getId());
+		planetRepository.deleteById(planet3.getId());
+		planetRepository.deleteById(planet4.getId());
+		planetRepository.deleteById(planet5.getId());
 	}
 	
 	@Test
