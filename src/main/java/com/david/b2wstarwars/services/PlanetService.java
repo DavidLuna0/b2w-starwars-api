@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.david.b2wstarwars.domain.Planet;
 import com.david.b2wstarwars.repositories.PlanetRepository;
+import com.david.b2wstarwars.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class PlanetService {
@@ -15,14 +16,16 @@ public class PlanetService {
 	@Autowired
 	PlanetRepository planetRepository;
 	
-	public Optional<Planet> findById(String id) {
+	public Planet findById(String id) {
 		Optional<Planet> obj = planetRepository.findById(id);
-		return obj;
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! - Id: " + id + " Tipo: " + Planet.class.getName()));
 	}
 	
-	public Optional<Planet> findByNome(String nome) {
+	public Planet findByNome(String nome) {
 		Optional<Planet> obj = planetRepository.findById(nome);
-		return obj;
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! - Id: " + nome + " Tipo: " + Planet.class.getName()));
 	}
 	
 	public List<Planet> findAll() {
