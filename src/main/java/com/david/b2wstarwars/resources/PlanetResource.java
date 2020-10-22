@@ -29,8 +29,8 @@ public class PlanetResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@RequestMapping(value="/nome", method=RequestMethod.GET)
-	public ResponseEntity<Planet> findByNome(@RequestParam(value="value") String nome) {
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public ResponseEntity<Planet> findByNome(@RequestParam String nome) {
 		Planet obj = planetService.findByNome(nome);
 		return ResponseEntity.ok().body(obj);
 	}
