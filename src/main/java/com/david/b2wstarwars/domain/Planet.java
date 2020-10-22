@@ -2,6 +2,8 @@ package com.david.b2wstarwars.domain;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,8 +15,12 @@ public class Planet implements Serializable {
 	
 	@Id
 	private String id;
+	
+	@NotNull(message = "Planet name must not be null")
 	private String nome;
+	@NotNull(message = "Planet climate must not be null")
 	private String clima;
+	@NotNull(message = "Planet terrain must not be null")
 	private String terreno;
 	
 	@Transient

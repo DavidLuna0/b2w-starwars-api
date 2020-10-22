@@ -2,6 +2,8 @@ package com.david.b2wstarwars.resources;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +36,7 @@ public class PlanetResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Planet> insert(@RequestBody Planet obj) {
+	public ResponseEntity<Planet> insert(@Valid @RequestBody Planet obj) {
 		obj = planetService.save(obj);
 		return ResponseEntity.ok().body(obj);
 	}
