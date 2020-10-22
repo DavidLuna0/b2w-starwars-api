@@ -3,6 +3,7 @@ package com.david.b2wstarwars.domain;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "planets")
@@ -15,6 +16,9 @@ public class Planet implements Serializable {
 	private String nome;
 	private String clima;
 	private String terreno;
+	
+	@Transient
+	private int quantidadeFilmes;
 	
 	public Planet() {
 		
@@ -58,6 +62,15 @@ public class Planet implements Serializable {
 
 	public void setTerreno(String terreno) {
 		this.terreno = terreno;
+	}
+	
+
+	public int getQuantidadeFilmes() {
+		return quantidadeFilmes;
+	}
+
+	public void setQuantidadeFilmes(int quantidadeFilmes) {
+		this.quantidadeFilmes = quantidadeFilmes;
 	}
 
 	@Override
