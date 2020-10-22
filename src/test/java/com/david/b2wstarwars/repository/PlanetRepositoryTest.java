@@ -52,21 +52,21 @@ public class PlanetRepositoryTest {
 	public void insertingPlanet() {
 		assertThat(planet1.getId()).isNull();
 		assertThat(planetRepository.save(planet1)).isNotNull();
-		assertThat(planet1.getNome()).isEqualTo("Bespin");
-		assertThat(planet1.getTerreno()).isNotNull();
-		assertThat(planet1.getClima()).isNotNull();
+		assertThat(planet1.getName()).isEqualTo("Bespin");
+		assertThat(planet1.getTerrain()).isNotNull();
+		assertThat(planet1.getClimate()).isNotNull();
 	}
 	
 	@Test
 	public void findPlanetById() {
 		assertThat(planetRepository.findById(planet2.getId())).isNotNull();
-		assertThat(planetRepository.findById(planet2.getId()).get().getNome()).isEqualTo("Alderaan");
+		assertThat(planetRepository.findById(planet2.getId()).get().getName()).isEqualTo("Alderaan");
 	}
 	
 	@Test
 	public void findPlanetByNome() {
-		assertThat(planetRepository.findByNome(planet3.getNome())).isNotNull();
-		assertThat(planetRepository.findByNome(planet3.getNome()).getTerreno()).isEqualTo("tundra, ice caves, mountain ranges");
+		assertThat(planetRepository.findByName(planet3.getName())).isNotNull();
+		assertThat(planetRepository.findByName(planet3.getName()).getTerrain()).isEqualTo("tundra, ice caves, mountain ranges");
 		
 	}
 	
@@ -79,8 +79,8 @@ public class PlanetRepositoryTest {
 	@Test
 	public void deletePlanetById() {
 		planetRepository.deleteById(planet4.getId());
-		assertThat(planetRepository.findByNome(planet4.getNome())).isNull();
-		assertThat(planetRepository.findByNome(planet5.getNome())).isNotNull();
+		assertThat(planetRepository.findByName(planet4.getName())).isNull();
+		assertThat(planetRepository.findByName(planet5.getName())).isNotNull();
 	}
 	
 	

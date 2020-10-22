@@ -27,8 +27,8 @@ public class PlanetService {
 		Optional<Planet> obj = planetRepository.findById(id);
 		int filmsQtd = 0;
 		try {
-			filmsQtd = swapiService.getPlanetQuantity(obj.get().getNome());
-			obj.get().setQuantidadeFilmes(filmsQtd);
+			filmsQtd = swapiService.getPlanetQuantity(obj.get().getName());
+			obj.get().setNumberOfFilms(filmsQtd);
 		} catch (Exception e) {
 			logger.error(e.toString(), e.getMessage());
 		}
@@ -37,21 +37,21 @@ public class PlanetService {
 				"Objeto não encontrado! - Id: " + id + " Tipo: " + Planet.class.getName()));
 	}
 	
-	public Planet findByNome(String nome) {
-		Planet obj = planetRepository.findByNome(nome);
+	public Planet findByName(String name) {
+		Planet obj = planetRepository.findByName(name);
 		int filmsQtd = 0;
 		
 		if(obj == null) {
 			throw new ObjectNotFoundException(
-					"Objeto não encontrado! - Id: " + nome + " Tipo: " + Planet.class.getName());
+					"Objeto não encontrado! - Id: " + name + " Tipo: " + Planet.class.getName());
 		}
 		try {
-			filmsQtd = swapiService.getPlanetQuantity(obj.getNome());
+			filmsQtd = swapiService.getPlanetQuantity(obj.getName());
 		} catch (Exception e) {
 			logger.error(e.toString(), e.getMessage());
 			return null;
 		}
-		obj.setQuantidadeFilmes(filmsQtd);
+		obj.setNumberOfFilms(filmsQtd);
 		return obj;
 	}
 	
@@ -60,28 +60,28 @@ public class PlanetService {
 		int filmsQtd = 0;
 		for (Planet planet : objs) {
 			try {
-				filmsQtd = swapiService.getPlanetQuantity(planet.getNome());
+				filmsQtd = swapiService.getPlanetQuantity(planet.getName());
 			} catch (Exception e) {
 				logger.error(e.toString(), e.getMessage());
 			}
-			planet.setQuantidadeFilmes(filmsQtd);
+			planet.setNumberOfFilms(filmsQtd);
 		}
 		return objs;
 	}
 	
 	public Planet save(Planet planet) {
-		Planet obj = planetRepository.findByNome(planet.getNome());
+		Planet obj = planetRepository.findByName(planet.getName());
 		int filmsQtd = 0;
 		if(obj == null) {			
 			obj = planetRepository.save(planet);
 		}
 		try {
-			filmsQtd = swapiService.getPlanetQuantity(obj.getNome());
+			filmsQtd = swapiService.getPlanetQuantity(obj.getName());
 		} catch (Exception e) {
 			logger.error(e.toString(), e.getMessage());
 			return null;
 		}
-		obj.setQuantidadeFilmes(filmsQtd);
+		obj.setNumberOfFilms(filmsQtd);
 		return obj;
 	}
 	

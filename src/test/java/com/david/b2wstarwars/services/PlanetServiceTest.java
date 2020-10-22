@@ -50,8 +50,8 @@ public class PlanetServiceTest {
 	@Test
 	public void findPlanetById() {
 		assertThat(planetService.findById(planet1.getId())).isNotNull();
-		assertThat(planetService.findById(planet1.getId()).getNome()).isEqualTo("Bespin");
-		assertThat(planetService.findById(planet1.getId()).getQuantidadeFilmes()).isEqualTo(1);
+		assertThat(planetService.findById(planet1.getId()).getName()).isEqualTo("Bespin");
+		assertThat(planetService.findById(planet1.getId()).getNumberOfFilms()).isEqualTo(1);
 	}
 	
 	@Test
@@ -63,15 +63,15 @@ public class PlanetServiceTest {
 	
 	@Test
 	public void findPlanetByNome() {
-		assertThat(planetService.findByNome(planet2.getNome())).isNotNull();
-		assertThat(planetService.findByNome(planet2.getNome()).getClima()).isEqualTo("temperate");
-		assertThat(planetService.findByNome(planet2.getNome()).getQuantidadeFilmes()).isEqualTo(2);
+		assertThat(planetService.findByName(planet2.getName())).isNotNull();
+		assertThat(planetService.findByName(planet2.getName()).getClimate()).isEqualTo("temperate");
+		assertThat(planetService.findByName(planet2.getName()).getNumberOfFilms()).isEqualTo(2);
 	}
 	
 	@Test
 	public void failFindPlanetByNome() {
 		assertThrows(ObjectNotFoundException.class, () -> {
-			planetService.findByNome("not valid name");
+			planetService.findByName("not valid name");
 		});
 	}
 	
@@ -89,7 +89,7 @@ public class PlanetServiceTest {
 	public void deleteById() {
 		planetService.deleteById(planet5.getId());
 		assertThrows(ObjectNotFoundException.class, () -> {
-		planetService.findByNome(planet5.getNome());
+		planetService.findByName(planet5.getName());
 	});
 	}
 	

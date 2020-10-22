@@ -17,14 +17,14 @@ public class Planet implements Serializable {
 	private String id;
 	
 	@NotNull(message = "Planet name must not be null")
-	private String nome;
+	private String name;
 	@NotNull(message = "Planet climate must not be null")
-	private String clima;
+	private String climate;
 	@NotNull(message = "Planet terrain must not be null")
-	private String terreno;
+	private String terrain;
 	
 	@Transient
-	private int quantidadeFilmes;
+	private int numberOfFilms;
 	
 	public Planet() {
 		
@@ -33,9 +33,9 @@ public class Planet implements Serializable {
 	public Planet(String id, String nome, String clima, String terreno) {
 		super();
 		this.id = id;
-		this.nome = nome;
-		this.clima = clima;
-		this.terreno = terreno;
+		this.name = nome;
+		this.climate = clima;
+		this.terrain = terreno;
 	}
 
 	public String getId() {
@@ -46,37 +46,36 @@ public class Planet implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getName() {
+		return name;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getClima() {
-		return clima;
+	public String getClimate() {
+		return climate;
 	}
 
-	public void setClima(String clima) {
-		this.clima = clima;
+	public void setClimate(String climate) {
+		this.climate = climate;
 	}
 
-	public String getTerreno() {
-		return terreno;
+	public String getTerrain() {
+		return terrain;
 	}
 
-	public void setTerreno(String terreno) {
-		this.terreno = terreno;
-	}
-	
-
-	public int getQuantidadeFilmes() {
-		return quantidadeFilmes;
+	public void setTerrain(String terrain) {
+		this.terrain = terrain;
 	}
 
-	public void setQuantidadeFilmes(int quantidadeFilmes) {
-		this.quantidadeFilmes = quantidadeFilmes;
+	public int getNumberOfFilms() {
+		return numberOfFilms;
+	}
+
+	public void setNumberOfFilms(int numberOfFilms) {
+		this.numberOfFilms = numberOfFilms;
 	}
 
 	@Override
@@ -103,4 +102,7 @@ public class Planet implements Serializable {
 			return false;
 		return true;
 	}
+	
+	
+
 }

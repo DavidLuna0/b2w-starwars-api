@@ -30,8 +30,8 @@ public class PlanetResource {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public ResponseEntity<Planet> findByNome(@RequestParam String nome) {
-		Planet obj = planetService.findByNome(nome);
+	public ResponseEntity<Planet> findByName(@RequestParam String nome) {
+		Planet obj = planetService.findByName(nome);
 		return ResponseEntity.ok().body(obj);
 	}
 	
