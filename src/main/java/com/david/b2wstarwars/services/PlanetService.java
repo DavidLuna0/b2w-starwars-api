@@ -61,7 +61,7 @@ public class PlanetService {
 			try {
 				filmsQtd = swapiService.getPlanetQuantity(planet.getNome());
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error(e.toString(), e.getMessage());
 			}
 			planet.setQuantidadeFilmes(filmsQtd);
 		}
