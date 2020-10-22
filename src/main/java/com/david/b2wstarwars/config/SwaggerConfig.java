@@ -25,7 +25,7 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfo("API de cadastro de plantes de Star Wars",
+		return new ApiInfo("API de cadastro de planetas de Star Wars",
 				"Esta API foi criada devido a desafio da B2W", 
 				"Versão 1.0.0",
 				"David Terms",

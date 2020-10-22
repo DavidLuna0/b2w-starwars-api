@@ -43,7 +43,7 @@ public class PlanetService {
 		
 		if(obj == null) {
 			throw new ObjectNotFoundException(
-					"Objeto não encontrado! - Id: " + name + " Tipo: " + Planet.class.getName());
+					"Objeto não encontrado! - Name: " + name + " Tipo: " + Planet.class.getName());
 		}
 		try {
 			filmsQtd = swapiService.getPlanetQuantity(obj.getName());
