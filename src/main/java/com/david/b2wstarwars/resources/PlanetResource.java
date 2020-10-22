@@ -36,11 +36,9 @@ public class PlanetResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Planet obj) {
+	public ResponseEntity<Planet> insert(@RequestBody Planet obj) {
 		obj = planetService.save(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(obj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+		return ResponseEntity.ok().body(obj);
 	}
 	
 	

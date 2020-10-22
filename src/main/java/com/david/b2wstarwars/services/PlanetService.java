@@ -49,6 +49,7 @@ public class PlanetService {
 			filmsQtd = swapiService.getPlanetQuantity(obj.getNome());
 		} catch (Exception e) {
 			logger.error(e.toString(), e.getMessage());
+			return null;
 		}
 		obj.setQuantidadeFilmes(filmsQtd);
 		return obj;
@@ -69,8 +70,8 @@ public class PlanetService {
 	}
 	
 	public Planet save(Planet planet) {
-		Planet obj = findByNome(planet.getNome());
-		if(findByNome(planet.getNome()) == null) {
+		Planet obj = planetRepository.findByNome(planet.getNome());
+		if(obj == null) {			
 			obj = planetRepository.save(planet);
 		}
 		return obj;
