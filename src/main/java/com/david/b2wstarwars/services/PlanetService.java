@@ -69,7 +69,10 @@ public class PlanetService {
 	}
 	
 	public Planet save(Planet planet) {
-		Planet obj = planetRepository.save(planet);
+		Planet obj = findByNome(planet.getNome());
+		if(findByNome(planet.getNome()) == null) {
+			obj = planetRepository.save(planet);
+		}
 		return obj;
 	}
 	
