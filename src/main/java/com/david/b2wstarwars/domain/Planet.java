@@ -25,12 +25,12 @@ public class Planet implements Serializable {
 		
 	}
 
-	public Planet(String id, String nome, String clima, String terreno) {
+	public Planet(String id, String name, String climate, String terrain) {
 		super();
 		this.id = id;
-		this.name = nome;
-		this.climate = clima;
-		this.terrain = terreno;
+		this.name = name;
+		this.climate = climate;
+		this.terrain = terrain;
 	}
 
 	public String getId() {

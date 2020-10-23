@@ -1,4 +1,4 @@
-package com.david.b2wstarwars;
+package com.david.b2wstarwars.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

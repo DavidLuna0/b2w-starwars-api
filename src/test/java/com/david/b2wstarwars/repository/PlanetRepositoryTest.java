@@ -61,7 +61,7 @@ public class PlanetRepositoryTest {
 	}
 	
 	@Test
-	public void findPlanetByNome() {
+	public void findPlanetByName() {
 		assertThat(planetRepository.findByName(planet3.getName())).isNotNull();
 		assertThat(planetRepository.findByName(planet3.getName()).getTerrain()).isEqualTo("tundra, ice caves, mountain ranges");
 		
