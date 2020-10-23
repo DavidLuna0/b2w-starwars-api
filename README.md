@@ -1,4 +1,3 @@
-![GitHub language count](https://github.com/DavidLuna0/b2w-starwars-api)
 <h1 align="center">  B2W Star Wars Api </h1>
 
 <p align="center">
