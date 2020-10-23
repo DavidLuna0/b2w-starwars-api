@@ -1,0 +1,13 @@
+version: "3"
+services:
+  mongo:
+    image: mongo
+    container_name: "starwars-mongo"
+    ports:
+    - 27017:27017
+  starwars-api:
+    image: starwars-api-1.0.1
+    ports:
+    - 8081:8081
+    depends_on: 
+        - mongo

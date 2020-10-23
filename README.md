@@ -20,23 +20,11 @@
 ## Primeiros Passos
 
 <p>
-  Primeiramente é necessário fazer o download do código da aplicação e buildar com o maven para que seja gerado o arquivo <i>b2w-starwars-api-1.0.0</i> no diretorio <b>target</b>.</br>
-  Após o build devemos subir o banco mongo usando docker com os comandos abaixo.
+  Para fazer a aplicação e o banco de dados funcionarem basta executar  comando do docker-compose abaixo.
 </p>
 
 ```
-docker pull mongo
-
-docker run -d -p 27017:27017 -e AUTH=no mongo
-```
-<p>
-  Em seguida, criaremos a imagem docker da aplicação com o .JAR gerado após o build e rodaremos ela.
-</p>
-
-```
-docker build -t starwars-api-1.0.0 .
-
-docker run -d -p 8081:8081 starwars-api-1.0.0
+docker-compose up
 ```
  
 ## Features
