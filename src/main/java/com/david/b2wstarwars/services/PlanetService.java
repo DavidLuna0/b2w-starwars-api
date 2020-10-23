@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.david.b2wstarwars.domain.Planet;
+import com.david.b2wstarwars.dto.PlanetDTO;
 import com.david.b2wstarwars.repositories.PlanetRepository;
 import com.david.b2wstarwars.services.exceptions.ObjectNotFoundException;
 
@@ -34,7 +35,7 @@ public class PlanetService {
 		}
 		
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
-				"Objeto não encontrado! - Id: " + id + " Tipo: " + Planet.class.getName()));
+				"Object Not Found! - Id: " + id + " Tipo: " + Planet.class.getName()));
 	}
 	
 	public Planet findByName(String name) {
@@ -43,7 +44,7 @@ public class PlanetService {
 		
 		if(obj == null) {
 			throw new ObjectNotFoundException(
-					"Objeto não encontrado! - Id: " + name + " Tipo: " + Planet.class.getName());
+					"Object Not Found! - Name: " + name + " Tipo: " + Planet.class.getName());
 		}
 		try {
 			filmsQtd = swapiService.getPlanetQuantity(obj.getName());
@@ -91,5 +92,10 @@ public class PlanetService {
 		} catch(Exception e) {
 			logger.error(e.toString(), e.getMessage());
 		}
+	}
+	
+	public Planet planetFromDto(PlanetDTO planetDto) {
+		Planet planet = new Planet(null, planetDto.getName(), planetDto.getClimate(), planetDto.getTerrain());
+		return planet;
 	}
 }

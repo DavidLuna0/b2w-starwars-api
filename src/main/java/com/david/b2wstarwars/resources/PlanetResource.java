@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.david.b2wstarwars.domain.Planet;
+import com.david.b2wstarwars.dto.PlanetDTO;
 import com.david.b2wstarwars.services.PlanetService;
 
 @RestController
@@ -30,15 +31,16 @@ public class PlanetResource {
 	}
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public ResponseEntity<Planet> findByName(@RequestParam String nome) {
-		Planet obj = planetService.findByName(nome);
+	public ResponseEntity<Planet> findByName(@RequestParam String name) {
+		Planet obj = planetService.findByName(name);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Planet> insert(@Valid @RequestBody Planet obj) {
-		obj = planetService.save(obj);
-		return ResponseEntity.ok().body(obj);
+	public ResponseEntity<Planet> insert(@Valid @RequestBody PlanetDTO obj) {
+		Planet planet = planetService.planetFromDto(obj);
+		planet = planetService.save(planet);
+		return ResponseEntity.ok().body(planet);
 	}
 	
 	

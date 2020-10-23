@@ -28,6 +28,7 @@ public class PlanetRepositoryTest {
 	
 	@BeforeEach
 	public void setUp() {
+		planetRepository.deleteAll();
 		planet1 = new Planet(null, "Bespin", "temperate", "gas giant");
 		planet2 = new Planet(null, "Alderaan", "temperate", "grasslands, mountains");
 		planet3 = new Planet(null, "Hoth", "frozen", "tundra, ice caves, mountain ranges");
@@ -41,11 +42,7 @@ public class PlanetRepositoryTest {
 	
 	@AfterEach
 	public void after() {
-		planetRepository.deleteById(planet1.getId());
-		planetRepository.deleteById(planet2.getId());
-		planetRepository.deleteById(planet3.getId());
-		planetRepository.deleteById(planet4.getId());
-		planetRepository.deleteById(planet5.getId());
+		planetRepository.deleteAll();
 	}
 	
 	@Test
@@ -64,7 +61,7 @@ public class PlanetRepositoryTest {
 	}
 	
 	@Test
-	public void findPlanetByNome() {
+	public void findPlanetByName() {
 		assertThat(planetRepository.findByName(planet3.getName())).isNotNull();
 		assertThat(planetRepository.findByName(planet3.getName()).getTerrain()).isEqualTo("tundra, ice caves, mountain ranges");
 		

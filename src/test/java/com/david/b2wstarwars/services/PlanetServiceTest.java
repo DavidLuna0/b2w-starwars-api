@@ -62,14 +62,14 @@ public class PlanetServiceTest {
 	}
 	
 	@Test
-	public void findPlanetByNome() {
+	public void findPlanetByName() {
 		assertThat(planetService.findByName(planet2.getName())).isNotNull();
 		assertThat(planetService.findByName(planet2.getName()).getClimate()).isEqualTo("temperate");
 		assertThat(planetService.findByName(planet2.getName()).getNumberOfFilms()).isEqualTo(2);
 	}
 	
 	@Test
-	public void failFindPlanetByNome() {
+	public void failFindPlanetByName() {
 		assertThrows(ObjectNotFoundException.class, () -> {
 			planetService.findByName("not valid name");
 		});
