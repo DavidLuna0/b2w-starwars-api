@@ -13,14 +13,14 @@
  * MongoDb
  * Springfox Swagger 2.7.0
 
- Link para a documentação da APIa com swagger: http://localhost:8081/swagger-ui.html
+ Link para a documentação da API com swagger: http://localhost:8081/swagger-ui.html
 
 </br>
 
 ## Primeiros Passos
 
 <p>
-  Para fazer a aplicação e o banco de dados funcionarem basta executar  comando do docker-compose abaixo.
+  Para fazer a aplicação e o banco de dados funcionarem basta baixar o código, entrar na pasta raiz do projeto e executar comando do docker-compose abaixo.
 </p>
 
 ```
