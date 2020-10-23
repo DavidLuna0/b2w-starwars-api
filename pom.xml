@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.david.b2w-starwars</groupId>
 	<artifactId>b2w-starwars-api</artifactId>
-	<version>0.1.0</version>
+	<version>0.2.0</version>
 	<name>b2w-starwars-api</name>
 	<description>B2W StarWars API</description>
 
@@ -50,6 +50,21 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.7.0</version>
 		</dependency>
 	</dependencies>
 
