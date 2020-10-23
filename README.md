@@ -20,7 +20,7 @@
 ## Primeiros Passos
 
 <p>
-  Para fazer a aplicação e o banco de dados funcionarem basta baixar o código e executar comando do docker-compose abaixo.
+  Para fazer a aplicação e o banco de dados funcionarem basta baixar o código, entrar na pasta raiz do projeto e executar comando do docker-compose abaixo.
 </p>
 
 ```
