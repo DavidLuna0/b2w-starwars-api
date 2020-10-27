@@ -43,6 +43,6 @@ deploy:
   - aws --version
   - docker --version
   script: 
-      - docker build --tag $DOCKER_REGISTRY/APP_NAME:$CI_PIPELINE_IID .
+      - docker build --tag $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID .
       - aws ecr get-login-password | docker login --username AWS --password-stdin $DOCKER_REGISTRY
       - docker push $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID
