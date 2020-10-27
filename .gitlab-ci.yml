@@ -3,7 +3,7 @@ image: docker:stable
 variables:
   DOCKER_DRIVER: overlay
   DOCKER_REGISTRY: 922924176525.dkr.ecr.us-east-2.amazonaws.com/starwars-api
-  APP_NAME: starwars-api:1.0.1
+  APP_NAME: starwars-api
   DOCKER_HOST: tcp://docker:2375
   AWS_REGION: us-east-2
 
