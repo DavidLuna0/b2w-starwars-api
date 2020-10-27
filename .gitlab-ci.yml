@@ -1,4 +1,12 @@
-image: java:8
+image: docker:stable
+
+variables:
+  DOCKER_DRIVER: overlay
+services:
+  - docker:dind
+before_script:
+  - docker info
+
 
 stages:
    - test
@@ -9,10 +17,12 @@ before_script:
   - chmod +x mvnw
 
 test:
+  image: java:8
   stage: test
   script: ./mvnw test
 
 build:
+  image: java:8
   stage: build
   script: ./mvnw package -Dmaven.test.skip=true
   artifacts:
@@ -20,7 +30,6 @@ build:
       - target/b2w-starwars-api-1.0.1.jar
 
 docker_build:
-  image: docker:stable
   stage: docker build
   script: 
       - docker build --tag starwars-api:1.0.1 .
