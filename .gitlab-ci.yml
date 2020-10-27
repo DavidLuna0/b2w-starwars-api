@@ -17,3 +17,7 @@ build:
   artifacts:
     paths:
       - target/b2w-starwars-api-1.0.1.jar
+
+docker_build:
+	stage: docker_build
+	script: docker build --tag starwars-api:1.0.1
