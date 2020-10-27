@@ -3,6 +3,7 @@ image: java:8
 stages:
    - test
    - build
+   - docker build
 
 before_script:
   - chmod +x mvnw
@@ -19,5 +20,5 @@ build:
       - target/b2w-starwars-api-1.0.1.jar
 
 docker_build:
-	stage: docker_build
-	script: docker build --tag starwars-api:1.0.1
+  stage: docker build
+  script: docker build --tag starwars-api:1.0.1
