@@ -2,16 +2,18 @@ image: docker:stable
 
 variables:
   DOCKER_DRIVER: overlay
+  DOCKER_REGISTRY: 922924176525.dkr.ecr.us-east-2.amazonaws.com/starwars-api
+  APP_NAME: starwars-api:1.0.1
+  DOCKER_HOST: tcp://docker:2375
+  AWS_REGION: us-east-2
+
 services:
   - docker:dind
-before_script:
-  - docker info
-
 
 stages:
    - test
    - build
-   - docker build
+   - deploy
 
 before_script:
   - chmod +x mvnw
@@ -29,9 +31,18 @@ build:
     paths:
       - target/b2w-starwars-api-1.0.1.jar
 
-docker_build:
-  stage: docker build
+deploy:
+  stage: deploy
+  image: 
+    name: amazon/aws-cli
+    entrypoint: [""]
+  services:
+  - docker:dind
+  before_script:
+  - amazon-linux-extras install docker
+  - aws --version
+  - docker --version
   script: 
-      - docker build --tag starwars-api:1.0.1 .
-      - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD docker.io
-      - docker push starwars-api:1.0.1
+      - docker build --tag $DOCKER_REGISTRY/APP_NAME:$CI_PIPELINE_IID .
+      - aws ecr get-login-password | docker login --username AWS --password-stdin $DOCKER_REGISTRY
+      - docker push $DOCKER_REGISTRY/APP_NAME:$CI_PIPELINE_IID
