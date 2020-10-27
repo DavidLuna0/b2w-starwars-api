@@ -14,11 +14,15 @@ test:
 
 build:
   stage: build
-  script: ./mvnw package
+  script: ./mvnw package -Dmaven.test.skip=true
   artifacts:
     paths:
       - target/b2w-starwars-api-1.0.1.jar
 
 docker_build:
+  image: docker:stable
   stage: docker build
-  script: docker build --tag starwars-api:1.0.1
+  script: 
+      - docker build --tag starwars-api:1.0.1
+      - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD docker.io
+      - docker push starwars-api:1.0.1
