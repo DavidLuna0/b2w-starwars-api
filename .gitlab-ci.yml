@@ -7,9 +7,6 @@ variables:
   DOCKER_HOST: tcp://docker:2375
   AWS_REGION: us-east-2
 
-services:
-  - docker:dind
-
 stages:
    - test
    - build
