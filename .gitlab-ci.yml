@@ -43,5 +43,5 @@ deploy:
       - docker build --tag $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID .
       - aws ecr get-login-password | docker login --username AWS --password-stdin $DOCKER_REGISTRY
       - docker push $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID
-      - aws ecs register-task-definition --region $AWS_REGION --family MyTaskDef --cli-input-json file://ecs-task-definition.json
-      - aws ecs update-service --region $AWS_REGION --cluster StarCluster --service StarService --task-definition MyTaskDef
+      - aws ecs register-task-definition --region us-east-2 --family MyTaskDef --cli-input-json file://ecs-task-definition.json
+      - aws ecs update-service --region us-east-2 --cluster StarCluster --service StarService --task-definition MyTaskDef

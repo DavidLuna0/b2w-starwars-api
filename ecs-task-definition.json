@@ -1,18 +1,18 @@
 {
     "family": "MyTaskDef",
-    "portMappings": [
-        {
-          "hostPort": 8081,
-          "protocol": "tcp",
-          "containerPort": 8081
-        }
-      ],
     "containerDefinitions": [
       {
         "name": "MyTaskDef",
         "image": "922924176525.dkr.ecr.us-east-2.amazonaws.com/starwars-api:latest",
         "cpu": 0,
         "memory": 256,
+        "portMappings": [ 
+            { 
+               "containerPort": 8081,
+               "hostPort": 8081,
+               "protocol": "tcp"
+            }
+         ],
         "logConfiguration": {
           "logDriver": "awslogs",
           "options": {
