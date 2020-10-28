@@ -13,19 +13,15 @@
  * MongoDb
  * Springfox Swagger 2.7.0
 
- Link para a documentação da API com swagger: http://localhost:8081/swagger-ui.html
-
+ Link para a documentação da API com swagger: http://3.138.34.18/swagger-ui.html
 </br>
 
 ## Primeiros Passos
 
 <p>
-  Para fazer a aplicação e o banco de dados funcionarem basta baixar o código, entrar na pasta raiz do projeto e executar comando do docker-compose abaixo.
+  Com o intuito de testar meus conhecimentos em integração e deploy continup eu usei a aplicação desenvolvida e coloquei nesta branch para criar um pipeline de teste, build e deploy no gitlab.</br>
+  Esta aplicação está atualmente rodando (não sei por quanto tempo pois retirei meu cartão da AWS), basta acessar os endpoints na sessão como utilizar.
 </p>
-
-```
-docker-compose up
-```
  
 ## Features
  - Inserir Planeta
@@ -39,7 +35,7 @@ docker-compose up
 
 ### Cadastrando planeta na base mongo
 
-**POST** `http://localhost:8081/api/planets`
+**POST** `http://3.138.34.18/api/planets`
 
 ```json
 
@@ -64,7 +60,7 @@ docker-compose up
 
 ### Listando planetas cadastrados na base mongo
 
-**GET** `http://localhost:8081/api/planets`
+**GET** `http://3.138.34.18/api/planets`
 
 ```json
 
@@ -88,8 +84,8 @@ docker-compose up
 ```
 ### Buscando planeta pelo nome na base mongo
 
-**GET** `http://localhost:8081/api/planets/?name=`**[name]** </br></br>
-`http://localhost:8081/api/planets/?name=Endor`
+**GET** `http://3.138.34.18/api/planets/?name=`**[name]** </br></br>
+`http://3.138.34.18/api/planets/?name=Endor`
 ```json
 
 // response 
@@ -104,8 +100,8 @@ docker-compose up
 
 ### Buscando planeta pelo Id na base Mongo
 
-**GET** `http://localhost:8081/api/planets`**[ID]** </br></br>
-`http://localhost:8081/api/planets/5f930e861e13d7090b7454fb`
+**GET** `http://3.138.34.18/api/planets`**[ID]** </br></br>
+`http://3.138.34.18/api/planets/5f930e861e13d7090b7454fb`
 ```json
 
 // response 
@@ -120,11 +116,14 @@ docker-compose up
 
 ### Deletando planeta da base mongo pelo Id
 
-**DELETE** `http://localhost:8081/api/planets`**[ID]** </br></br>
-`http://localhost:8081/api/planets/5f930e861e13d7090b7454fb`
+**DELETE** `http://3.138.34.18/api/planets`**[ID]** </br></br>
+`http://3.138.34.18/api/planets/5f930e861e13d7090b7454fb`
 ```json
 
 // response 
 //204 No Content
 //No body returned for response
 ```
+## Pipeline do Gitlab
+
+<img src="GITLAB.png"/>
