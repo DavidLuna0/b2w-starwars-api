@@ -10,6 +10,7 @@ variables:
 stages:
    - test
    - build
+   - build_image
    - deploy
 
 before_script:
@@ -28,8 +29,8 @@ build:
     paths:
       - target/b2w-starwars-api-1.0.1.jar
 
-deploy:
-  stage: deploy
+build_image:
+  stage: build_image
   image: 
     name: amazon/aws-cli
     entrypoint: [""]
@@ -43,5 +44,11 @@ deploy:
       - docker build --tag $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID .
       - aws ecr get-login-password | docker login --username AWS --password-stdin $DOCKER_REGISTRY
       - docker push $DOCKER_REGISTRY/$APP_NAME:$CI_PIPELINE_IID
-      - aws ecs register-task-definition --region us-east-2 --family MyTaskDef --cli-input-json file://ecs-task-definition.json
-      - aws ecs update-service --region us-east-2 --cluster StarCluster --service StarService --task-definition MyTaskDef
+
+deploy:
+  stage: deploy
+  image: python:latest
+  script:
+    - pip install awscli
+    - aws ecs register-task-definition --region us-east-2 --family MyTaskDef --cli-input-json file://ecs-task-definition.json
+    - aws ecs update-service --region us-east-2 --cluster StarCluster --service StarService --task-definition MyTaskDef
