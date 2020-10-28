@@ -1,28 +1,33 @@
 {
-    "family": "MyTaskDef",
-    "containerDefinitions": [
-      {
-        "name": "MyTaskDef",
-        "image": "922924176525.dkr.ecr.us-east-2.amazonaws.com/starwars-api:latest",
-        "cpu": 0,
-        "memory": 256,
-        "portMappings": [ 
-            { 
-               "containerPort": 8081,
-               "hostPort": 8081,
-               "protocol": "tcp"
-            }
-         ],
-        "logConfiguration": {
-          "logDriver": "awslogs",
-          "options": {
-            "awslogs-create-group": "true",
-            "awslogs-group": "/ecs/MyTaskDef",
-            "awslogs-region": "us-east-2",
-            "awslogs-stream-prefix": "ecs"
-          }
+  "family": "MyTaskDef",
+  "containerDefinitions": [
+    {
+      "name": "MyTaskDef",
+      "image": "922924176525.dkr.ecr.us-east-2.amazonaws.com/starwars-api:latest",
+      "cpu": 0,
+      "memory": 256,
+      "portMappings": [
+        {
+          "containerPort": 8081,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "spring.profiles.active",
+          "value": "default"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-create-group": "true",
+          "awslogs-group": "/ecs/MyTaskDef",
+          "awslogs-region": "us-east-2",
+          "awslogs-stream-prefix": "ecs"
         }
       }
-    ]
-  }
-  
+    }
+  ]
+}
